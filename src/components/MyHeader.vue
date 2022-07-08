@@ -1,4 +1,5 @@
 <template>
+<!-- creo la struttura html del componente header -->
   <div class="header-barr">
       <img src="../assets/logo-small.svg" alt="logo img">
   </div>
@@ -6,6 +7,7 @@
 
 <script>
 export default {
+    // definisco il componente
     name:'MyHeader'
 }
 </script>
