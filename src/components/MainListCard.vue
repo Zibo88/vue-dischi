@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <div class="list-container">
            <div class="album-list flex">
                <MainAlbum v-for="element,index in cardList" :key="index" :featuresAlbum="element"/>
@@ -51,6 +51,7 @@ export default {
 .list-container{
     width: 80%;
     margin: 0 auto;
+    padding: 20px 0;
 }
 .album-list.flex{
     flex-wrap: wrap;

@@ -15,6 +15,8 @@ export default {
     background-color: #2d3a46;
     img{
         width: 30px;
+        margin: 5px 0;
+        padding-left: 5px;
     }
 }
 </style>
