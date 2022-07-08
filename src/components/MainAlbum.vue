@@ -30,13 +30,16 @@ export default {
     background-color: #2d3a46;
     
     img{
-        max-height: 200px;
+        max-height: 170px;
         overflow: hidden;
     }
 
     h3{
         color: white;
         text-align: center;
+    }
+    &:hover{
+        transform: scale(1.2);
     }
 }
 
