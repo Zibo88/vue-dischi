@@ -2,6 +2,7 @@
     <div class="container">
         <!-- creo la sezione relativa alla lista di album -->
         <section class="list-container">
+           <MyBarr @research="searchGender"/>
            <div class="album-list flex">
                <!-- 1.1utilizzo la singola card
                  caso v-for: ne creo tante quante sono presenti all'interno dell'array cardList precedentemente riempito con tramite l'url di axios.get() richiamato con la funzione reCall()  -->
@@ -18,24 +19,49 @@ import MainAlbum from './MainAlbum.vue'
 // importo axios dove poi dovrò stampare la lista di card
 import axios from 'axios';
 
+// importo la barra di ricerca
+import  MyBarr from './MyBarr.vue'
+
 
 export default {
     // definisco il componenete dove verranno stampati altri componenti
     name: 'MainListCard',
     
+    
     components:{
         // la definisco come singolo componente card
         MainAlbum,
+        MyBarr
     },
     data(){
         return{
-            // url axios
+            // url axios (era possibile mettere il link axios direttamente nella funzione reCall() al posto di this.url) 
             url: 'https://flynn.boolean.careers/exercises/api/array/music',
             // array vuoto che mi servirà per avere un array di oggetti da poter riempire con (this.arrayVuoto = result.data.(console.log(result)))
             cardList: [],
-            
+            arrayFiltred:[],
+            choice:'all'
         }  
+        
     },
+    computed:{
+      filteredGeners(){
+        if(this.choice == 'all'){
+           return this.cardList
+        }
+        
+        return this.cardList.filter((item) => {
+           return item.genre.includes(this.choice)
+        })
+            
+        
+        
+      }
+
+       
+    },
+
+   
     // richiamo la funzione così che sia creata
     created(){
         this.reCall()
@@ -47,15 +73,30 @@ export default {
         axios.get(this.url).then((result) => {
             // l'array sarà riempito dal response (in questo caso array/data/response vedi console.log di result) presente nell'array di oggetti dell'url
             this.cardList = result.data.response
+            // valutazione del contenuto della chiamta axios
             console.log(result)
+            console.log(this.cardList[0].genre)
         })
 
     },
+    searchGender(choice){
+       this.userValue = choice
+       console.log('choice',choice)
+    },
+    
+	
+}
+   
+
     
 
-  }
+    
+    
 
 }
+
+
+
 </script>
 
 <style lang="scss" scoped>
