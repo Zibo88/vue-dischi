@@ -8,7 +8,7 @@
     <main>
       <!-- 1.1 stampo il componente MainListcard  -->
       <!-- 2 il componente presenta al suo interno un altro componente MainAlbum che verrà di conseguenza stampato a sua volta   -->
-      <MainListCard/>
+      <MainListCard />
     </main>
   </div>
 </template>
@@ -26,7 +26,8 @@ export default {
     MyHeader,
     MainListCard,
 
-  }
+  },
+  
 }
 </script>
 

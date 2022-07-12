@@ -45,23 +45,18 @@ export default {
         
     },
     computed:{
-      filteredGeners(){
+      genersFiltred(){
         if(this.choice == 'all'){
-           return this.cardList
+            return this.cardList
         }
-        
-        return this.cardList.filter((item) => {
-           return item.genre.includes(this.choice)
-        })
-            
-        
-        
+       if(this.choice == 'pop'){
+           return this.arrayFiltred
+       }
+       return this.arrayFiltred
       }
-
-       
+    
     },
 
-   
     // richiamo la funzione così che sia creata
     created(){
         this.reCall()
@@ -75,7 +70,16 @@ export default {
             this.cardList = result.data.response
             // valutazione del contenuto della chiamta axios
             console.log(result)
-            console.log(this.cardList[0].genre)
+
+            // controllo all'interno degli album i generi che sono presenti. Se non sono gia presenti vengono pushati
+            // all'interno dell'array Filtrato
+             this.cardList.forEach(element => {
+                if(!this.arrayFiltred.includes(element.genre)){
+                    this.arrayFiltred.push(element.genre)
+                }
+            });
+            console.log(this.arrayFiltred)
+           
         })
 
     },
